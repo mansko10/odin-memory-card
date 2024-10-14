@@ -6,6 +6,7 @@ export default class IDs {
 
   reset() {
     this.currentIDs = [];
+    this.previousIDs = [];
   }
 
   addIDs() {

@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import IDs from "./IDs";
 
-const IDsInstance = new IDs();
-IDsInstance.addIDs();
-
-function Card({ pokemon, handleCardClick }) {
+function Card({ pokemon, handleCardClick, reset }) {
   return (
     <div
       onClick={() => {
         if (pokemon.wasClicked) {
           console.log("clicked");
+          reset();
         } else {
           handleCardClick(pokemon.id);
         }
@@ -24,23 +21,24 @@ function Card({ pokemon, handleCardClick }) {
   );
 }
 
-export default function Cards() {
+export default function Cards({
+  IDsInstance,
+  pokemons,
+  setPokemons,
+  setGameState,
+}) {
   console.log(IDsInstance.previousIDs);
-
-  const [pokemons, setPokemons] = useState([]);
 
   const shuffledPokemons = shuffle(pokemons);
 
-  useEffect(() => {
-    IDsInstance.getPokemons(setPokemons);
-  }, []);
-
   function levelUp() {
+    setGameState("win");
     IDsInstance.addIDs();
     IDsInstance.getPokemons(setPokemons);
   }
 
   function reset() {
+    setGameState("loss");
     IDsInstance.reset();
     IDsInstance.addIDs();
     IDsInstance.getPokemons(setPokemons);
@@ -86,6 +84,7 @@ export default function Cards() {
   }
 
   useEffect(() => {
+    console.log(pokemons.length);
     if (pokemons.length) {
       checkAllClicked() ? levelUp() : undefined;
     }
@@ -100,6 +99,7 @@ export default function Cards() {
               key={pokemon.id}
               pokemon={pokemon}
               handleCardClick={handleCardClick}
+              reset={reset}
             />
           );
         })}

@@ -1,9 +1,9 @@
-import Cards from "./Cards";
+import Game from "./Game";
 
 export default function App() {
   return (
     <>
-      <Cards />
+      <Game />
     </>
   );
 }
