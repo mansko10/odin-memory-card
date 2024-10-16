@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import Loading from "./Loading";
 
 function Card({ pokemon, handleCardClick, reset }) {
   return (
@@ -35,7 +36,7 @@ export default function Cards({
   const shuffledPokemons = shuffle(pokemons);
 
   function levelUp() {
-    setGameState("win");
+    // setGameState("win");
     IDsInstance.addIDs();
     IDsInstance.getPokemons(setPokemons);
   }
@@ -97,6 +98,7 @@ export default function Cards({
   return (
     <>
       <div className="cards mx-auto flex min-h-[400px] max-w-[800px] flex-wrap content-start items-start justify-center gap-2 border-2 border-red-800">
+        {!pokemons.length && <Loading />}
         {shuffledPokemons.map((pokemon) => {
           return (
             <Card

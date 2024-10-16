@@ -28,6 +28,7 @@ export default class IDs {
   }
 
   getPokemons(setPokemons) {
+    setPokemons([]);
     Promise.all(
       this.currentIDs.map((id) => {
         return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Cards from "./Cards";
 import Win from "./Win";
 import Loss from "./Loss";
+import Loading from "./Loading";
 
 const IDsInstance = new IDs();
 IDsInstance.addIDs();
