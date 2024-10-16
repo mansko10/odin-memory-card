@@ -26,6 +26,9 @@ export default function Cards({
   pokemons,
   setPokemons,
   setGameState,
+  score,
+  setScore,
+  highScore,
 }) {
   console.log(IDsInstance.previousIDs);
 
@@ -47,6 +50,7 @@ export default function Cards({
   function handleCardClick(id) {
     const result = pokemons.map((pokemon) => {
       if (pokemon.id === id) {
+        setScore(score + 1);
         return { ...pokemon, wasClicked: true };
       } else {
         return pokemon;
@@ -106,6 +110,8 @@ export default function Cards({
       </div>
       <button onClick={levelUp}>Continue</button>
       <button onClick={reset}>Reset</button>
+      <div>Current score: {score}</div>
+      <div>High Score: {highScore}</div>
     </>
   );
 }

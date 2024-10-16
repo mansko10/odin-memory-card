@@ -1,8 +1,15 @@
-export default function Win({ setGameState }) {
+export default function Win({ setToCards, score, highScore }) {
   return (
     <>
-      <h1>You won this round!</h1>
-      <button onClick={() => setGameState("cards")}>
+      <h1>
+        You won this round! Your score this time is {score}. Your highest score
+        this session is {highScore}
+      </h1>
+      <button
+        onClick={() => {
+          setToCards();
+        }}
+      >
         Continue to next round...
       </button>
     </>
