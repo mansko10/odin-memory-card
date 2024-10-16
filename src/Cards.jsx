@@ -26,10 +26,10 @@ export default function Cards({
   IDsInstance,
   pokemons,
   setPokemons,
+  gameState,
   setGameState,
   score,
   setScore,
-  highScore,
 }) {
   console.log(IDsInstance.previousIDs);
 
@@ -97,23 +97,20 @@ export default function Cards({
 
   return (
     <>
-      <div className="cards mx-auto flex min-h-[400px] max-w-[800px] flex-wrap content-start items-start justify-center gap-2 border-2 border-red-800">
+      <div className="cards mx-auto flex min-h-[100px] max-w-[800px] flex-wrap items-center justify-center gap-2">
         {!pokemons.length && <Loading />}
-        {shuffledPokemons.map((pokemon) => {
-          return (
-            <Card
-              key={pokemon.id}
-              pokemon={pokemon}
-              handleCardClick={handleCardClick}
-              reset={reset}
-            />
-          );
-        })}
+        {gameState === "cards" &&
+          shuffledPokemons.map((pokemon) => {
+            return (
+              <Card
+                key={pokemon.id}
+                pokemon={pokemon}
+                handleCardClick={handleCardClick}
+                reset={reset}
+              />
+            );
+          })}
       </div>
-      <button onClick={levelUp}>Continue</button>
-      <button onClick={reset}>Reset</button>
-      <div>Current score: {score}</div>
-      <div>High Score: {highScore}</div>
     </>
   );
 }

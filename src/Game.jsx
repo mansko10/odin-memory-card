@@ -1,9 +1,7 @@
 import IDs from "./IDs";
 import { useState, useEffect } from "react";
-import Cards from "./Cards";
-import Win from "./Win";
-import Loss from "./Loss";
-import Loading from "./Loading";
+import Scores from "./Scores";
+import PlayGame from "./PlayGame";
 
 const IDsInstance = new IDs();
 IDsInstance.addIDs();
@@ -33,33 +31,21 @@ export default function Game() {
 
   return (
     <>
-      {gameState === "cards" && (
-        <Cards
+      <div className="mx-auto flex min-h-[100vh] max-w-[1200px] justify-center border-2">
+        <Scores score={score} highScore={highScore} />
+        <PlayGame
           IDsInstance={IDsInstance}
           pokemons={pokemons}
           setPokemons={setPokemons}
+          gameState={gameState}
           setGameState={setGameState}
           score={score}
           setScore={setScore}
           highScore={highScore}
-        />
-      )}
-      {gameState === "win" && (
-        <Win
           setToCards={setToCards}
-          score={score}
-          highScore={highScore}
           setHighScore={setHighScore}
         />
-      )}
-      {gameState === "loss" && (
-        <Loss
-          setToCards={setToCards}
-          score={score}
-          highScore={highScore}
-          setHighSCore={setHighScore}
-        />
-      )}
+      </div>
     </>
   );
 }
