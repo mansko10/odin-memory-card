@@ -39,7 +39,14 @@ export default class IDs {
       }),
     ).then((values) => {
       function cap(string) {
-        const result = string.charAt(0).toUpperCase() + string.slice(1);
+        const removeHyphen = string.replaceAll("-", " ");
+        const result = removeHyphen
+          .split(" ")
+          .map((word) => {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+          })
+          .join(" ");
+
         return result;
       }
       const pokemons = values.map((value) => {
