@@ -33,7 +33,6 @@ export default function Cards({
   const shuffledPokemons = shuffle(pokemons);
 
   function levelUp() {
-    // setGameState("win");
     IDsInstance.addIDs();
     IDsInstance.getPokemons(setPokemons);
   }
@@ -86,7 +85,6 @@ export default function Cards({
   }
 
   useEffect(() => {
-    console.log(pokemons.length);
     if (pokemons.length) {
       checkAllClicked() ? levelUp() : undefined;
     }
