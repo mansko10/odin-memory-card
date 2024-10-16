@@ -1,4 +1,4 @@
-import IDs from "./IDs";
+import IDs from "../IDs";
 import { useState, useEffect } from "react";
 import Scores from "./Scores";
 import PlayGame from "./PlayGame";

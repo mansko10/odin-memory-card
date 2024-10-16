@@ -6,7 +6,6 @@ function Card({ pokemon, handleCardClick, reset }) {
     <div
       onClick={() => {
         if (pokemon.wasClicked) {
-          console.log("clicked");
           reset();
         } else {
           handleCardClick(pokemon.id);
@@ -31,8 +30,6 @@ export default function Cards({
   score,
   setScore,
 }) {
-  console.log(IDsInstance.previousIDs);
-
   const shuffledPokemons = shuffle(pokemons);
 
   function levelUp() {
